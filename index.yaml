@@ -3,7 +3,27 @@ entries:
   springboot-service:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2025-10-02T16:23:03.076872736-05:00"
+    created: "2025-10-02T16:29:38.38131609-05:00"
+    description: Chart genérico para servicios Spring Boot con observabilidad y seguridad
+    digest: 2b4a6699647e954b9140b2b0c9ec4257fdb9d76ee12a5473256c436394cd8471
+    home: https://github.com/lostreseditores/helm-charts
+    keywords:
+    - springboot
+    - java
+    - microservice
+    maintainers:
+    - email: tecnologia@lostreseditores.com
+      name: Platform Team
+    name: springboot-service
+    sources:
+    - https://github.com/lostreseditores/helm-charts
+    type: application
+    urls:
+    - https://lte-lostreseditores.github.io/helm-charts/springboot-service-0.1.2.tgz
+    version: 0.1.2
+  - apiVersion: v2
+    appVersion: 1.0.0
+    created: "2025-10-02T16:29:38.380501896-05:00"
     description: Chart genérico para servicios Spring Boot con observabilidad y seguridad
     digest: 53d7bdb5e8ea259cb109fc800db9ea88af2e844418e69f59ba85eca33ebf05e8
     home: https://github.com/lostreseditores/helm-charts
@@ -23,7 +43,7 @@ entries:
     version: 0.1.1
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2025-10-02T16:23:03.075820732-05:00"
+    created: "2025-10-02T16:29:38.37945465-05:00"
     description: Chart genérico para servicios Spring Boot con observabilidad y seguridad
     digest: 9492ba0855528ae2ccbdb8d289fceaf994dbeaa9b7cd81c2117215521769218c
     home: https://github.com/lostreseditores/helm-charts
@@ -41,4 +61,4 @@ entries:
     urls:
     - https://lte-lostreseditores.github.io/helm-charts/springboot-service-0.1.0.tgz
     version: 0.1.0
-generated: "2025-10-02T16:23:03.074560885-05:00"
+generated: "2025-10-02T16:29:38.378277016-05:00"
