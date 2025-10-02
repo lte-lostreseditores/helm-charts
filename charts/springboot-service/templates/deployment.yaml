@@ -53,6 +53,11 @@ spec:
             {{- toYaml .valueFrom | nindent 12 }}
           {{- end }}
         {{- end }}
+        {{- if .Values.config }}
+        envFrom:
+        - configMapRef:
+            name: {{ include "springboot-service.fullname" . }}-config
+        {{- end }}
         livenessProbe:
           {{- toYaml .Values.livenessProbe | nindent 10 }}
         readinessProbe:

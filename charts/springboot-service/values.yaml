@@ -33,6 +33,12 @@ env:
   #       name: app-secrets
   #       key: db-password
 
+# ConfigMap para variables de entorno adicionales
+config:
+  # Ejemplo de configuración:
+  # LOGGING_LEVEL_ROOT: INFO
+  # SPRING_DATASOURCE_URL: jdbc:postgresql://localhost:5432/mydb
+
 # Configuración del servicio
 service:
   type: ClusterIP
