@@ -1,0 +1,17 @@
+apiVersion: v2
+name: springboot-service
+description: Chart genérico para servicios Spring Boot con observabilidad y seguridad
+type: application
+version: 0.1.0
+appVersion: "1.0.0"
+keywords:
+  - springboot
+  - java
+  - microservice
+home: https://github.com/lostreseditores/helm-charts
+sources:
+  - https://github.com/lostreseditores/helm-charts
+maintainers:
+  - name: Platform Team
+    email: tecnologia@lostreseditores.com
+dependencies: []

@@ -1,0 +1,121 @@
+# Configuración por defecto para servicios Spring Boot
+# Este archivo define los valores por defecto para el chart springboot-service
+
+# Configuración de la imagen
+image:
+  repository: ""  # Requerido: nombre de la imagen
+  digest: ""      # Digest SHA256 de la imagen (recomendado para producción)
+  tag: "latest"   # Tag de la imagen (solo si digest está vacío)
+  pullPolicy: IfNotPresent
+
+# Configuración de réplicas
+replicaCount: 1
+
+# Configuración de recursos (obligatorio)
+resources:
+  limits:
+    cpu: 1000m
+    memory: 1Gi
+  requests:
+    cpu: 500m
+    memory: 512Mi
+
+# Variables de entorno
+env:
+  - name: SPRING_PROFILES_ACTIVE
+    value: "production"
+  - name: SERVER_PORT
+    value: "8080"
+  # Ejemplo de secret:
+  # - name: DB_PASSWORD
+  #   valueFrom:
+  #     secretKeyRef:
+  #       name: app-secrets
+  #       key: db-password
+
+# Configuración del servicio
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 8080
+
+# Configuración de health checks
+livenessProbe:
+  httpGet:
+    path: /actuator/health/liveness
+    port: 8080
+  initialDelaySeconds: 60
+  periodSeconds: 30
+  timeoutSeconds: 5
+  failureThreshold: 3
+
+readinessProbe:
+  httpGet:
+    path: /actuator/health/readiness
+    port: 8080
+  initialDelaySeconds: 30
+  periodSeconds: 10
+  timeoutSeconds: 5
+  failureThreshold: 3
+
+# Configuración de HPA (Horizontal Pod Autoscaler)
+hpa:
+  enabled: true
+  minReplicas: 1
+  maxReplicas: 10
+  targetCPUUtilizationPercentage: 70
+
+# Configuración de seguridad
+podSecurityContext:
+  runAsNonRoot: true
+  runAsUser: 1000
+  fsGroup: 1000
+
+securityContext:
+  allowPrivilegeEscalation: false
+  readOnlyRootFilesystem: true
+  runAsNonRoot: true
+  runAsUser: 1000
+  capabilities:
+    drop:
+    - ALL
+
+# Configuración de afinidad y toleraciones
+affinity: {}
+tolerations: []
+nodeSelector: {}
+
+# Configuración de PodDisruptionBudget
+podDisruptionBudget:
+  minAvailable: 1
+
+# Configuración de NetworkPolicy
+networkPolicy:
+  enabled: true
+  allowEgressWeb: false  # Permitir tráfico HTTP/HTTPS saliente
+
+# Configuración de ServiceMonitor (Prometheus)
+serviceMonitor:
+  enabled: false
+  port: metrics
+  path: /actuator/prometheus
+  interval: 30s
+  scrapeTimeout: 10s
+
+# Labels obligatorios para cost/ownership
+labels:
+  app.kubernetes.io/name: springboot-service
+  app.kubernetes.io/instance: ""
+  app.kubernetes.io/part-of: lte-gestion
+  owner: platform
+  cost-center: engineering
+  env: ""
+
+# Configuración de ServiceAccount
+serviceAccount:
+  create: true
+  annotations: {}
+  name: ""
+
+# Configuración de namespace
+namespace: lte-gestion-dev
