@@ -21,7 +21,9 @@ spec:
         {{- toYaml . | nindent 8 }}
         {{- end }}
       annotations:
+        {{- if .Values.config }}
         checksum/config: {{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum }}
+        {{- end }}
     spec:
       serviceAccountName: {{ include "springboot-service.serviceAccountName" . }}
       securityContext:
