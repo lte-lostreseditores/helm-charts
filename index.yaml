@@ -3,7 +3,7 @@ entries:
   springboot-service:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2025-10-02T16:05:27.715001023-05:00"
+    created: "2025-10-02T16:12:41.377152678-05:00"
     description: Chart genérico para servicios Spring Boot con observabilidad y seguridad
     digest: 9492ba0855528ae2ccbdb8d289fceaf994dbeaa9b7cd81c2117215521769218c
     home: https://github.com/lostreseditores/helm-charts
@@ -21,4 +21,4 @@ entries:
     urls:
     - https://lte-lostreseditores.github.io/helm-charts/springboot-service-0.1.0.tgz
     version: 0.1.0
-generated: "2025-10-02T16:05:27.713844718-05:00"
+generated: "2025-10-02T16:12:41.37637794-05:00"
