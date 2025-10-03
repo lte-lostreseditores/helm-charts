@@ -108,10 +108,8 @@ serviceMonitor:
   interval: 30s
   scrapeTimeout: 10s
 
-# Labels obligatorios para cost/ownership
+# Labels obligatorios para cost/ownership (sin duplicar los del helper)
 labels:
-  app.kubernetes.io/name: springboot-service
-  app.kubernetes.io/instance: ""
   app.kubernetes.io/part-of: lte-gestion
   owner: platform
   cost-center: engineering
