@@ -3,7 +3,27 @@ entries:
   springboot-service:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2025-10-02T16:40:30.326285213-05:00"
+    created: "2025-10-03T16:06:15.908795479-05:00"
+    description: Chart genérico para servicios Spring Boot con observabilidad y seguridad
+    digest: 3d7eb78cc8155052880e9a18ba5c184e7e1d56d15c56a6ac87c10cd3d5fe042b
+    home: https://github.com/lostreseditores/helm-charts
+    keywords:
+    - springboot
+    - java
+    - microservice
+    maintainers:
+    - email: tecnologia@lostreseditores.com
+      name: Platform Team
+    name: springboot-service
+    sources:
+    - https://github.com/lostreseditores/helm-charts
+    type: application
+    urls:
+    - https://lte-lostreseditores.github.io/helm-charts/springboot-service-0.1.3.tgz
+    version: 0.1.3
+  - apiVersion: v2
+    appVersion: 1.0.0
+    created: "2025-10-03T16:06:15.908096306-05:00"
     description: Chart genérico para servicios Spring Boot con observabilidad y seguridad
     digest: f23db3684bb6859aafa804adbe8ac25bc2fceabd09ade93377e8b8c841b8c6dc
     home: https://github.com/lostreseditores/helm-charts
@@ -23,7 +43,7 @@ entries:
     version: 0.1.2
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2025-10-02T16:40:30.325601844-05:00"
+    created: "2025-10-03T16:06:15.907320568-05:00"
     description: Chart genérico para servicios Spring Boot con observabilidad y seguridad
     digest: 53d7bdb5e8ea259cb109fc800db9ea88af2e844418e69f59ba85eca33ebf05e8
     home: https://github.com/lostreseditores/helm-charts
@@ -43,7 +63,7 @@ entries:
     version: 0.1.1
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2025-10-02T16:40:30.324866533-05:00"
+    created: "2025-10-03T16:06:15.906406217-05:00"
     description: Chart genérico para servicios Spring Boot con observabilidad y seguridad
     digest: 9492ba0855528ae2ccbdb8d289fceaf994dbeaa9b7cd81c2117215521769218c
     home: https://github.com/lostreseditores/helm-charts
@@ -61,4 +81,4 @@ entries:
     urls:
     - https://lte-lostreseditores.github.io/helm-charts/springboot-service-0.1.0.tgz
     version: 0.1.0
-generated: "2025-10-02T16:40:30.32394015-05:00"
+generated: "2025-10-03T16:06:15.904922354-05:00"
