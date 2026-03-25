@@ -58,6 +58,10 @@ spec:
         - configMapRef:
             name: {{ include "springboot-service.fullname" . }}-config
         {{- end }}
+        {{- if and .Values.startupProbe .Values.startupProbe.httpGet }}
+        startupProbe:
+          {{- toYaml .Values.startupProbe | nindent 10 }}
+        {{- end }}
         livenessProbe:
           {{- toYaml .Values.livenessProbe | nindent 10 }}
         readinessProbe:

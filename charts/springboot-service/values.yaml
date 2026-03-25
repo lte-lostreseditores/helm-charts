@@ -45,6 +45,8 @@ service:
   port: 80
   targetPort: 8080
 
+# Opcional (gestion-lte-back prod): definir startupProbe con httpGet para aplazar liveness/readiness
+
 # Configuración de health checks
 livenessProbe:
   httpGet:
