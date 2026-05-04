@@ -72,6 +72,9 @@ hpa:
   minReplicas: 1
   maxReplicas: 10
   targetCPUUtilizationPercentage: 70
+  # Si se define (p. ej. 75), añade métrica memory utilization al HPA v2.
+  targetMemoryUtilizationPercentage: null
+  # behavior: opcional (map autoscaling/v2). Si se omite, el HPA usa el default del API server.
 
 # Configuración de seguridad
 podSecurityContext:
