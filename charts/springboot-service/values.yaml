@@ -113,14 +113,12 @@ serviceMonitor:
   interval: 30s
   scrapeTimeout: 10s
 
-# Labels obligatorios para cost/ownership
+# Labels extra (cost/ownership). No incluir app.kubernetes.io/name ni instance aquí:
+# ya vienen de springboot-service.labels / selectorLabels y duplicarlas rompe YAML/kustomize.
 labels:
-  app.kubernetes.io/name: springboot-service
-  app.kubernetes.io/instance: ""
   app.kubernetes.io/part-of: lte-gestion
   owner: platform
   cost-center: engineering
-  env: ""
 
 # Configuración de ServiceAccount
 serviceAccount:
