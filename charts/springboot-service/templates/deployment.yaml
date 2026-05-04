@@ -53,10 +53,15 @@ spec:
             {{- toYaml .valueFrom | nindent 12 }}
           {{- end }}
         {{- end }}
-        {{- if .Values.config }}
+        {{- if or .Values.config .Values.envFrom }}
         envFrom:
+        {{- if .Values.config }}
         - configMapRef:
             name: {{ include "springboot-service.fullname" . }}-config
+        {{- end }}
+        {{- with .Values.envFrom }}
+        {{- toYaml . | nindent 8 }}
+        {{- end }}
         {{- end }}
         {{- if and .Values.startupProbe .Values.startupProbe.httpGet }}
         startupProbe:

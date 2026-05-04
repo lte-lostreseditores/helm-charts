@@ -33,6 +33,9 @@ env:
   #       name: app-secrets
   #       key: db-password
 
+# Opcional: variables desde Secret/ConfigMap (p. ej. External Secrets + SSM)
+envFrom: []
+
 # ConfigMap para variables de entorno adicionales
 config:
   # Ejemplo de configuración:
