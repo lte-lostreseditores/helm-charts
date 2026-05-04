@@ -19,7 +19,7 @@ helm repo update
 
 ```bash
 # Descargar chart
-helm pull lostres/springboot-service --version 0.1.0
+helm pull lostres/springboot-service --version 0.1.6
 
 # Instalar con valores personalizados
 helm install mi-app lostres/springboot-service \
@@ -102,8 +102,9 @@ charts/springboot-service/
 Para crear un release:
 
 ```bash
-git tag chart/springboot-service/v0.1.1
-git push origin chart/springboot-service/v0.1.1
+# La versión del paquete sale de charts/springboot-service/Chart.yaml (p. ej. 0.1.6).
+git tag chart/springboot-service/v0.1.6
+git push origin chart/springboot-service/v0.1.6
 ```
 
 ## 📝 Estándares
