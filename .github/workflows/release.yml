@@ -4,6 +4,11 @@ on:
   push:
     tags:
       - 'chart/springboot-service/v*'
+  # Tras corregir el workflow, ejecutar manualmente si el tag ya existía y no quieres retaguear.
+  workflow_dispatch:
+
+permissions:
+  contents: write
 
 jobs:
   release:
@@ -29,41 +34,35 @@ jobs:
         helm package charts/springboot-service/
         ls -la *.tgz
 
-    - name: Update Index
+    - name: Update index and push gh-pages
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
-        # Crear directorio gh-pages si no existe
+        set -euo pipefail
+        AUTH_ORIGIN="https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+        INDEX_URL="https://${GITHUB_REPOSITORY_OWNER}.github.io/helm-charts"
+
         mkdir -p gh-pages
-        
-        # Si existe el branch gh-pages, clonarlo
+
         if git show-ref --verify --quiet refs/remotes/origin/gh-pages; then
-          git clone --branch gh-pages --single-branch https://github.com/${{ github.repository }}.git gh-pages
+          git clone --branch gh-pages --single-branch "$AUTH_ORIGIN" gh-pages
         else
           mkdir -p gh-pages
           cd gh-pages
           git init
-          git remote add origin https://github.com/${{ github.repository }}.git
+          git remote add origin "$AUTH_ORIGIN"
           cd ..
         fi
-        
-        # Mover charts a gh-pages
+
         mv *.tgz gh-pages/
-        
-        # Actualizar index
         cd gh-pages
-        helm repo index . --url https://${{ github.repository_owner }}.github.io/helm-charts
-        
-        # Configurar git
+
         git config user.name "GitHub Actions"
         git config user.email "actions@github.com"
-        
-        # Commit y push
+
+        helm repo index . --url "$INDEX_URL"
+
         git add .
         git commit -m "Release springboot-service ${{ github.ref_name }}"
-        git push origin gh-pages
-
-    - name: Deploy to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v3
-      if: github.ref == 'refs/heads/gh-pages'
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./gh-pages
+        git remote set-url origin "$AUTH_ORIGIN"
+        git push origin HEAD:gh-pages
